@@ -7,6 +7,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "tsc && vite build",
+    "deploy:env": "S_API_HOST=https://test.xx.com import-meta-env -x .env.example -p dist/index.html",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

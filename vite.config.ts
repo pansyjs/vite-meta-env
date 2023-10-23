@@ -7,8 +7,6 @@ const envPrefix = ['VITE_', 'S_'];
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, __dirname, envPrefix);
 
-  console.log(env);
-
   return {
     envPrefix,
     plugins: [
