@@ -51,7 +51,7 @@ export default defineConfig(({ mode }) => {
 
 ## 前端环境获取环境变量
 
-借助 [import-meta-env](https://github.com/iendeavor/import-meta-env) 提供的能力使构建产物与环境无关
+借助 [import-meta-env](https://github.com/import-meta-env/import-meta-env) 提供的能力使构建产物与环境无关
 
 具体实现如下
 
