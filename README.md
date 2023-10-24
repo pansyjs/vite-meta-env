@@ -1,17 +1,18 @@
 <h1 align="center">
-  多环境适配示例
+  Vite 环境变量注入&多环境适配方案示例
 </h1>
 
 ## 目标
 
 - 支持多环境适配
-- 支持产物与环境无关
+- 支持构建产物与环境无关
 
 ## 环境变量加载
 
 > Vite [环境变量和模式](https://cn.vitejs.dev/guide/env-and-mode.html#env-files)
 
-通过 `.env` 及 `.env.loacl` 解决本地开发及线上环境变量不一致问题 
+- 通过 `*.loacl` 解决本地开发和线上环境变量不一致问题 
+- 多环境可通过 `mode` 解决多环境适配问题
 
 ```sh
 .env                # 所有情况下都会加载
@@ -20,9 +21,12 @@
 .env.[mode].local   # 只在指定模式下加载，但会被 git 忽略
 ```
 
-多环境可通过 `mode` 解决多环境适配问题
+**加载优先级**
 
-## Vite 服务
+- 指定模式的文件（例如 .env.prod）会比通用形式的优先级更高（例如 .env）
+- Vite 执行时已经存在的环境变量有最高的优先级，不会被 .env 类文件覆盖
+
+## Vite 服务获取环境变量
 
 可通过以下方式获取环境变量
 
@@ -45,7 +49,7 @@ export default defineConfig(({ mode }) => {
 })
 ```
 
-## 前端 SPA 环境变量
+## 前端环境获取环境变量
 
 借助 [import-meta-env](https://github.com/iendeavor/import-meta-env) 提供的能力使构建产物与环境无关
 
@@ -75,6 +79,8 @@ export default defineConfig(({ mode }) => {
 ```
 
 2. 添加 `.env.example`
+
+明确需要加载的环境变量清单
 
 ```sh
 # .env.example
